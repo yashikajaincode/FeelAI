@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: feelai-backend
+    env: python
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn app:app"
+    workingDir: backend
+    autoDeploy: true
+
+  - type: web
+    name: feelai-frontend
+    env: static
+    buildCommand: "npm install && npm run build"
+    staticPublishPath: frontend/build
+    workingDir: frontend
+    autoDeploy: true
