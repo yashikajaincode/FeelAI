@@ -12,7 +12,7 @@ load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), ".env"))
 print("Loaded GROQ_API_KEY:", os.getenv("GROQ_API_KEY"))
 
 app = FastAPI()
-@app.get("/")
+@app.api_route("/", methods=["GET", "HEAD"])
 def read_root():
     return {"message": "FeelAI Backend is Live!"}
 
